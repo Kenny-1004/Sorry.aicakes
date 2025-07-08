@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-weight: 700;
+        }
+
+        section{
+            height: 100vh;
+        }
+
+        img{
+            height: 100vh;
+            width: 50vh;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        h1{
+            position: absolute;
+            display: flex;
+            align-self: center;
+            justify-self: center;
+            margin: -140vh 0 0 45vh;
+            font-size: 15px;
+            width: 20vh;
+            color: white;
+            text-align: center;
+            text-shadow: 0 0 2px black;
+        }
+    </style>
+</head>
+<body>
+
+    <section>
+        <img src="aicakes.jpg" alt="">
+        <h1>No matter what happens, please always remember this.
+            I love you more than words can explain, more than actions 
+            can show, and more than you’ll ever fully know. You’re not just my ex. 
+            You’re my best friend, my safe place, and the most beautiful part of my everyday.
+        </h1>
+
+        <audio id="mySong" autoplay loop>
+    <source src="multo.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    </section>
+
+
+    <script>
+   const audio = document.getElementById("mySong");
+
+    audio.volume = 0; // Start muted
+
+    audio.addEventListener("loadedmetadata", () => {
+      audio.currentTime = 147; // Start at 140 seconds
+      audio.play();
+
+      // Gradually fade in volume
+      let fadeInterval = setInterval(() => {
+        if (audio.volume < 1.0) {
+          audio.volume = Math.min(audio.volume + 0.02, 1); // Increase volume by 0.02 every 100ms
+        } else {
+          clearInterval(fadeInterval); // Stop when volume reaches 1
+        }
+      }, 100); // Run every 100ms
+    });
+    </script>
+</body>
+</html>
